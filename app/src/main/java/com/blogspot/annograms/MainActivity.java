@@ -48,15 +48,47 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             String reverseWord = "";
-            for (int j = word.length()-1; j >= 0; j--) {
-                if (!Character.isAlphabetic(word.charAt(j))) {
-                    continue;
-                } else {
-                    reverseWord = reverseWord + word.charAt(j);
-                }
-            }
-            reversedString = reversedString + reverseWord + " ";
+            char[] partCharArr;
+//            for (int j = word.length()-1; j >= 0; j--) {
+//                if (!Character.isAlphabetic(word.charAt(j))) {
+//                   continue;
+//                   // reverseWord = reverseWord + word.charAt(j+1);
+//                } else {
+//                    reverseWord = reverseWord + word.charAt(j);
+//                }
+//            }
+            partCharArr = new char[word.length()];
+        for (int j = 0; j < word.length(); j++) {
+            partCharArr[j] = word.charAt(j);
         }
+        Log.d("partCharArr", reversedString);
+            reversedString = reversedString + reverse(partCharArr) + " ";
+        }
+        Log.d("partCharArr = ", reversedString);
         return reversedString;
     }
+
+
+    String reverse(char[] partCharArr) {
+        char temp;
+        int j = partCharArr.length;
+        int k = 0;
+        for (int i = 0; i < partCharArr.length / 2; i++) {
+            if (!Character.isLetter(partCharArr[k])) {
+                k++;
+                j++;
+                i--;
+            } else if (!Character.isLetter(partCharArr[j - 1 - k])) {
+                j--;
+            } else {
+                temp = partCharArr[k];
+                partCharArr[k] = partCharArr[j - 1 - i];
+                partCharArr[j - 1 - i] = temp;
+                k++;
+                j--;
+            }
+        }
+        return new String(partCharArr);
+    }
+
 }
