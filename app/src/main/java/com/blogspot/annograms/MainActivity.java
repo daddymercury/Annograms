@@ -29,33 +29,31 @@ public class MainActivity extends AppCompatActivity {
         editTextInput = findViewById(R.id.editTextInput);
         buttonShowResult = findViewById(R.id.buttonShowResult);
         textViewResult = findViewById(R.id.textViewResult);
+        buttonShowResult = new Button(this);
+        buttonShowResult.setOnClickListener(new ButtonClick());
 
     }
-
-    public void convertString(View view) {
-
+    private void buttonClicked() {
         String stringInput = editTextInput.getText().toString();
-        MainActivity objWithString = new MainActivity();
         reverseWordInMyString(stringInput);
         textViewResult.setText(reverseWordInMyString(stringInput).toString());
-
-
     }
+
+    class ButtonClick implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            buttonClicked();
+        }
+    }
+
+
     public String reverseWordInMyString(String str) {
         String[] words = str.split(" ");
-        String rreversedString = "";
+        String reversedString = "";
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             String reverseWord = "";
             char[] partCharArr;
-//            for (int j = word.length()-1; j >= 0; j--) {
-//                if (!Character.isAlphabetic(word.charAt(j))) {
-//                   continue;
-//                   // reverseWord = reverseWord + word.charAt(j+1);
-//                } else {
-//                    reverseWord = reverseWord + word.charAt(j);
-//                }
-//            }
             partCharArr = new char[word.length()];
         for (int j = 0; j < word.length(); j++) {
             partCharArr[j] = word.charAt(j);
