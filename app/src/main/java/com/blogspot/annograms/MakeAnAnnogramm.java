@@ -18,10 +18,8 @@ public class MakeAnAnnogramm {
             for (int j = 0; j < word.length(); j++) {
                 partCharArr[j] = word.charAt(j);
             }
-            Log.d("partCharArr", reversedString);
             reversedString = reversedString + reverse(partCharArr) + " ";
         }
-        Log.d("partCharArr = ", reversedString);
         return reversedString;
     }
 

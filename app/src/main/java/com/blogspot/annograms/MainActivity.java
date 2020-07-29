@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
         String anagramm = createAnagram(editTextInput.getText().toString());
         textViewResult.setText(anagramm);
     }
