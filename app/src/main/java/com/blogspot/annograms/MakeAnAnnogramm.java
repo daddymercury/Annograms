@@ -24,25 +24,31 @@ public class MakeAnAnnogramm {
     }
 
     static String reverse(char[] partCharArr) {
-        char temp;
-        int j = partCharArr.length;
-        int k = 0;
-        for (int i = 0; i < partCharArr.length / 2; i++) {
-            if (!Character.isLetter(partCharArr[k])) {
-                k++;
-                j++;
-                i--;
-            } else if (!Character.isLetter(partCharArr[j - 1 - k])) {
-                j--;
-            } else {
-                temp = partCharArr[k];
-                partCharArr[k] = partCharArr[j - 1 - i];
-                partCharArr[j - 1 - i] = temp;
-                k++;
-                j--;
+        int arrayStart = 0;
+        int arrayEnd = partCharArr.length - 1;
+
+        while (arrayStart < arrayEnd) {
+            if (Character.isLetter(partCharArr[arrayStart]) && Character.isLetter(partCharArr[arrayEnd])) {
+                char temp = partCharArr[arrayStart];
+                partCharArr[arrayStart] = partCharArr[arrayEnd];
+                partCharArr[arrayEnd] = temp;
+
+                arrayStart++;
+                arrayEnd--;
+            }
+            else if (Character.isLetter(partCharArr[arrayStart]) && !Character.isLetter(partCharArr[arrayEnd])) {
+                arrayEnd--;
+            }
+            else if (!Character.isLetter(partCharArr[arrayStart]) && Character.isLetter(partCharArr[arrayEnd])) {
+                arrayStart++;
+            }
+            else {
+                arrayStart++;
+                arrayEnd--;
             }
         }
-        return new String(partCharArr);
+
+        return String.valueOf(partCharArr);
     }
 
 
