@@ -32,7 +32,6 @@ public class MakeAnAnnogramm {
                 char temp = partCharArr[arrayStart];
                 partCharArr[arrayStart] = partCharArr[arrayEnd];
                 partCharArr[arrayEnd] = temp;
-
                 arrayStart++;
                 arrayEnd--;
             }
