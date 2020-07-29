@@ -8,12 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-public class MainActivity extends AppCompatActivity {
-    EditText editTextInput;
-    Button buttonShowResult;
-    TextView textViewResult;
-
 //    Write an application that reverses all the words of input text:
 //
 //    E.g. "abcd efgh" => "dcba hgfe"
@@ -22,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
 //
 //    E.g. "a1bcd efg!h" => "d1cba hgf!e"
 
+public class MainActivity extends AppCompatActivity {
+   private EditText editTextInput;
+    private Button buttonShowResult;
+    private TextView textViewResult;
+    private String reversedString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
 
         String stringInput = editTextInput.getText().toString();
         MainActivity objWithString = new MainActivity();
-        objWithString.reverseWordInMyString(stringInput);
+        reverseWordInMyString(stringInput);
         textViewResult.setText(reverseWordInMyString(stringInput).toString());
 
 
     }
     public String reverseWordInMyString(String str) {
         String[] words = str.split(" ");
-        String reversedString = "";
+        String rreversedString = "";
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             String reverseWord = "";
