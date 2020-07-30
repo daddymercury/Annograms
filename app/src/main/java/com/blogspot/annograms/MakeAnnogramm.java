@@ -1,8 +1,6 @@
 package com.blogspot.annograms;
 
-import android.util.Log;
-
-public class MakeAnAnnogramm {
+public class MakeAnnogramm {
     public static String createAnagram(String StringToReverse) {
         return reverseWordInMyString(StringToReverse);
     }

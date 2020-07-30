@@ -11,7 +11,8 @@
         android:id="@+id/editTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="type text here"></EditText>
+        android:hint="type text here"
+        />
 
     <Button
         android:id="@+id/buttonShowResult"
@@ -24,5 +25,6 @@
     <TextView
         android:id="@+id/textViewResult"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></TextView>
+        android:layout_height="wrap_content"
+        />
 </LinearLayout>

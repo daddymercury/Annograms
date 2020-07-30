@@ -1,13 +1,11 @@
 package com.blogspot.annograms;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import static com.blogspot.annograms.MakeAnAnnogramm.createAnagram;
+import static com.blogspot.annograms.MakeAnnogramm.createAnagram;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
