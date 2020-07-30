@@ -13,10 +13,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textViewResult;
     private EditText editTextInput;
 
-    public EditText getEditTextInput() {
-        return editTextInput;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
