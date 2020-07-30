@@ -11,7 +11,7 @@
         android:id="@+id/editTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="type text here"
+        android:hint="@string/type_text_here"
         />
 
     <Button
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Show Result"
+        android:text="@string/show_result"
          />
 
     <TextView
