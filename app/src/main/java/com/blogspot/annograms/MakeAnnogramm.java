@@ -1,24 +1,16 @@
 package com.blogspot.annograms;
 
 public class MakeAnnogramm {
-    public static String createAnagram(String StringToReverse) {
-        return reverseWordInMyString(StringToReverse);
-    }
 
     public static String reverseWordInMyString(String str) {
         String[] words = str.split(" ");
-        String reversedString = "";
+        StringBuilder stringBuilderResult = new StringBuilder();
+
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
-            String reverseWord = "";
-            char[] partCharArr;
-            partCharArr = new char[word.length()];
-            for (int j = 0; j < word.length(); j++) {
-                partCharArr[j] = word.charAt(j);
-            }
-            reversedString = reversedString + reverse(partCharArr) + " ";
+            stringBuilderResult.append(reverse(word.toCharArray()) + " ");
         }
-        return reversedString;
+        return stringBuilderResult.toString();
     }
 
     static String reverse(char[] partCharArr) {

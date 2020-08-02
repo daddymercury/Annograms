@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import static com.blogspot.annograms.MakeAnnogramm.createAnagram;
+import static com.blogspot.annograms.MakeAnnogramm.reverseWordInMyString;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        String anagramm = createAnagram(editTextInput.getText().toString());
+        String anagramm = reverseWordInMyString(editTextInput.getText().toString());
         textViewResult.setText(anagramm);
     }
 
