@@ -4,13 +4,13 @@ public class MakeAnnogramm {
 
     public static String reverseWordInMyString(String str) {
         String[] words = str.split(" ");
-        StringBuilder stringBuilderResult = new StringBuilder();
+        StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
-            stringBuilderResult.append(reverse(word.toCharArray()) + " ");
+            result.append(reverse(word.toCharArray()) + " ");
         }
-        return stringBuilderResult.toString();
+        return result.toString();
     }
 
     static String reverse(char[] partCharArr) {
