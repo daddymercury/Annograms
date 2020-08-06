@@ -13,7 +13,7 @@ public class MakeAnnogramm {
         return result.toString();
     }
 
-    static String reverse(char[] partCharArr) {
+    private static String reverse(char[] partCharArr) {
         int arrayStart = 0;
         int arrayEnd = partCharArr.length - 1;
 
