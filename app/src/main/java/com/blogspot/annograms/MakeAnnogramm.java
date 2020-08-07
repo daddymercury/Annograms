@@ -3,14 +3,24 @@ package com.blogspot.annograms;
 public class MakeAnnogramm {
 
     public static String reverseWordInMyString(String str) {
-        String[] words = str.split(" ");
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < words.length; i++) {
-            String word = words[i];
-            result.append(reverse(word.toCharArray()) + " ");
+        boolean isNull = false;
+        try {
+            str.equalsIgnoreCase(null);
+        } catch (NullPointerException npe) {
+            isNull = true;
         }
-        return result.toString();
+        if (isNull) {
+            return "NULL";
+        } else {
+            String[] words = str.split(" ");
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 0; i < words.length; i++) {
+                String word = words[i];
+                result.append(reverse(word.toCharArray()) + " ");
+            }
+            return result.toString();
+        }
     }
 
     private static String reverse(char[] partCharArr) {
