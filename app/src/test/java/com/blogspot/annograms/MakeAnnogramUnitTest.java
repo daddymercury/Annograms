@@ -9,61 +9,91 @@ public class MakeAnnogramUnitTest {
 
     @Test
     public void testNonSymbolicCharsNotReversed() {
-        String str = "-9238%%217119!@# _+#*@!&@@*82839";
-        assertEquals("-9238%%217119!@# _+#*@!&@@*82839 ",reverseWordInMyString(str));
+
+        String stringToReverse = "-9238%%217119!@# _+#*@!&@@*82839";
+        String expectedResult = "-9238%%217119!@# _+#*@!&@@*82839 ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testAllCharsShouldReverseWholeLine() {
-        String str = "hello this is only adcdefg";
-        assertEquals("olleh siht si ylno gfedcda ", reverseWordInMyString(str));
+
+        String stringToReverse = "hello this is only adcdefg";
+        String expectedResult = "olleh siht si ylno gfedcda ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testOnlySymbolicCharsShouldReverse() {
-        String str = "he3ll5o th@@is is on%^ly ad1cd3ef4g";
-        assertEquals("ol3le5h si@@ht si yl%^no gf1ed3cd4a ", reverseWordInMyString(str));
+
+        String stringToReverse = "he3ll5o th@@is is on%^ly ad1cd3ef4g";
+        String expectedResult = "ol3le5h si@@ht si yl%^no gf1ed3cd4a ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testReverseOnlySymbolicChars() {
-        String str = "5hello5 4this4 3is3 2only2 1adcdefg1";
-        assertEquals("5olleh5 4siht4 3si3 2ylno2 1gfedcda1 ", reverseWordInMyString(str));
+
+        String stringToReverse = "5hello5 4this4 3is3 2only2 1adcdefg1";
+        String expectedResult = "5olleh5 4siht4 3si3 2ylno2 1gfedcda1 ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testNonSymbolicCharsNotReversedInOneWord() {
-        String str = "123*&@^#(@#";
-        assertEquals("123*&@^#(@# ", reverseWordInMyString(str));
+
+        String stringToReverse = "123*&@^#(@#";
+        String expectedResult = "123*&@^#(@# ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testAllCharsShouldReverseWholeLineInOneWord() {
-        String str = "loremhello";
-        assertEquals("ollehmerol ", reverseWordInMyString(str));
+
+        String stringToReverse = "loremhello";
+        String expectedResult = "ollehmerol ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testOnlySymbolicCharsShouldReverseInOneWord() {
-        String str = "olleh#merol";
-        assertEquals("lorem#hello ", reverseWordInMyString(str));
+
+        String stringToReverse = "olleh#merol";
+        String expectedResult = "lorem#hello ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testReverseOnlySymbolicCharsInOneWord() {
-        String str = "1olleh#merol1";
-        assertEquals("1lorem#hello1 ", reverseWordInMyString(str));
+
+        String stringToReverse = "1olleh#merol1";
+        String expectedResult = "1lorem#hello1 ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testReverseEmptyString() {
-        String str = "";
-        assertEquals(" ", reverseWordInMyString(str));
+
+        String stringToReverse = "";
+        String expectedResult = " ";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 
     @Test
     public void testReverseNullString() {
-        String str = null;
-        assertEquals("NULL", reverseWordInMyString(str));
+
+        String stringToReverse = null;
+        String expectedResult = "NULL";
+
+        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
 }
