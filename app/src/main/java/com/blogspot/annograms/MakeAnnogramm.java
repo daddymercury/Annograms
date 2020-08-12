@@ -3,14 +3,8 @@ package com.blogspot.annograms;
 public class MakeAnnogramm {
 
     public static String reverseWordInMyString(String str) {
-        boolean isNull = false;
-        try {
-            str.equalsIgnoreCase(null);
-        } catch (NullPointerException npe) {
-            isNull = true;
-        }
-        if (isNull) {
-            return "NULL";
+        if (str == null) {
+            throw new IllegalArgumentException("Input shouldn't be empty");
         } else {
             String[] words = str.split(" ");
             StringBuilder result = new StringBuilder();
