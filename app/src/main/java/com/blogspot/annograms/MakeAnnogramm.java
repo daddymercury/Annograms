@@ -3,7 +3,7 @@ package com.blogspot.annograms;
 public class MakeAnnogramm {
 
     public static String reverseWordInMyString(String str) {
-        if (str == null) {
+        if (str == null || str.equals("")) {
             throw new IllegalArgumentException("Input shouldn't be empty");
         } else {
             String[] words = str.split(" ");

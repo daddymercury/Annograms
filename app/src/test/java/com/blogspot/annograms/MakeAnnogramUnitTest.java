@@ -78,13 +78,4 @@ public class MakeAnnogramUnitTest {
 
         assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
     }
-
-    @Test
-    public void testReverseEmptyString() {
-
-        String stringToReverse = "";
-        String expectedResult = " ";
-
-        assertEquals(expectedResult, reverseWordInMyString(stringToReverse));
-    }
 }
