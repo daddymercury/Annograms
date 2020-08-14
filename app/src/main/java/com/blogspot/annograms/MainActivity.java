@@ -32,12 +32,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String anagramm = reverseWordInMyString(editTextInput.getText().toString());
             textViewResult.setText(anagramm);
         } catch (IllegalArgumentException argument) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    argument.getMessage(),
-                    Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+            messageToastView(argument);
         }
     }
+
+   void messageToastView(IllegalArgumentException argument) {
+       Toast toast = Toast.makeText(getApplicationContext(),
+               argument.getMessage(),
+               Toast.LENGTH_SHORT);
+       toast.setGravity(Gravity.CENTER, 0, 0);
+       toast.show();
+   }
 
 }
