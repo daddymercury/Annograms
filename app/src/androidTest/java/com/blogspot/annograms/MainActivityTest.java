@@ -35,84 +35,15 @@ public class MainActivityTest {
 
     @Test
     public void mainActivityTest() {
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.editTextInput),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText.perform(replaceText("h"), closeSoftKeyboard());
+        ViewInteraction appCompatEditText = onView(allOf(withId(R.id.editTextInput),
+                childAtPosition(childAtPosition(withId(android.R.id.content),
+                        0), 0), isDisplayed()));
+        appCompatEditText.perform(replaceText("this i$ an e$press7o t38e-s8t"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.editTextInput), withText("h"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText2.perform(click());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.editTextInput), withText("h"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText3.perform(replaceText("this is 3te1st "));
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editTextInput), withText("this is 3te1st "),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText4.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.editTextInput), withText("this is 3te1st "),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText5.perform(click());
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.editTextInput), withText("this is 3te1st "),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText6.perform(replaceText("this is 3te1st espre$$o"));
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.editTextInput), withText("this is 3te1st espre$$o"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText7.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.buttonShowResult), withText("Show Result"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction appCompatButton = onView(allOf(withId(R.id.buttonShowResult),
+                withText("Show Result"),
+                childAtPosition(childAtPosition(withId(android.R.id.content),
+                        0), 1), isDisplayed()));
         appCompatButton.perform(click());
     }
 
