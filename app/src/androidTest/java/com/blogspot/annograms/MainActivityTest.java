@@ -25,6 +25,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import com.jraska.falcon.FalconSpoonRule;
+
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -32,9 +34,13 @@ public class MainActivityTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    @Rule
+    public final FalconSpoonRule falconSpoonRule = new FalconSpoonRule();
 
     @Test
     public void mainActivityTest() {
+        MainActivity mainActivity = new MainActivity();
+        falconSpoonRule.screenshot(mainActivity, "Before_result");
         ViewInteraction appCompatEditText = onView(allOf(withId(R.id.editTextInput),
                 childAtPosition(childAtPosition(withId(android.R.id.content),
                         0), 0), isDisplayed()));
@@ -45,7 +51,7 @@ public class MainActivityTest {
                 childAtPosition(childAtPosition(withId(android.R.id.content),
                         0), 1), isDisplayed()));
         appCompatButton.perform(click());
-    }
+        falconSpoonRule.screenshot(mainActivity, "After_result");    }
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
