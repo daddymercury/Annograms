@@ -1,6 +1,7 @@
 package com.blogspot.annograms;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.view.ContextThemeWrapper;
@@ -11,6 +12,7 @@ import android.view.ViewParent;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.rule.GrantPermissionRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.squareup.spoon.Spoon;
@@ -29,6 +31,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.rule.GrantPermissionRule.grant;
 import static org.hamcrest.Matchers.allOf;
 
 
@@ -38,7 +41,10 @@ public class MainActivityTest  {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
-
+    @Rule
+    public GrantPermissionRule mRuntimePermissionRule =
+            grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE);
     @Test
     public void mainActivityTest() {
         Activity activity = mActivityTestRule.getActivity();
