@@ -2,4 +2,5 @@
     <string name="app_name">Annograms</string>
     <string name="show_result">Show Result</string>
     <string name="type_text_here">type text here</string>
+    <string name="toast_text">Input shouldn\'t be empty</string>
 </resources>
