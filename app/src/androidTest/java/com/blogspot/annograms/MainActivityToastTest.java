@@ -2,6 +2,7 @@ package com.blogspot.annograms;
 
 
 import android.app.Activity;
+import android.util.Log;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -37,9 +38,10 @@ public class MainActivityToastTest {
         onView(withText("Input shouldn't be empty")).inRoot(withDecorView(not(is(mActivityRule.
                 getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
+        Log.d("shouldShowToast",onView(withText("Input shouldn't be empty")).inRoot(withDecorView(not(is(mActivityRule.
+                getActivity().getWindow().getDecorView())))).check(matches(isDisplayed())).toString());
+
         Spoon.screenshot(activity, "screen_with_toast");
 
     }
-
-
 }
