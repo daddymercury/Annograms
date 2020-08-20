@@ -10,7 +10,6 @@ import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
-import androidx.test.runner.AndroidJUnit4;
 
 import com.squareup.spoon.Spoon;
 
@@ -30,12 +29,14 @@ import static androidx.test.rule.GrantPermissionRule.grant;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-@LargeTest
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+
 @RunWith(AndroidJUnit4.class)
-
-
 public class MainActivityUITest {
 
+    @RunWith(AndroidJUnit4.class)
+    @LargeTest
     class RotationTest {
         @Rule
         public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -67,7 +68,7 @@ public class MainActivityUITest {
         }
     }
 
-    @RunWith(androidx.test.ext.junit.runners.AndroidJUnit4.class)
+    @RunWith(AndroidJUnit4.class)
     @LargeTest
     class MainActivityToastTest2 {
 
