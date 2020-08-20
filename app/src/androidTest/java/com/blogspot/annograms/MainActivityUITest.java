@@ -7,9 +7,9 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 
 import androidx.test.InstrumentationRegistry;
-import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.squareup.spoon.Spoon;
 
@@ -29,15 +29,10 @@ import static androidx.test.rule.GrantPermissionRule.grant;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityUITest {
 
-    @RunWith(AndroidJUnit4.class)
-    @LargeTest
-    class RotationTest {
         @Rule
         public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
@@ -66,33 +61,20 @@ public class MainActivityUITest {
             rotateScreen();
             Spoon.screenshot(activity, "screen_with_text_after_second_rotating");
         }
-    }
 
-    @RunWith(AndroidJUnit4.class)
-    @LargeTest
-    class MainActivityToastTest2 {
-
-        @Rule
-        public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
         @Test
         public void shouldShowToast() {
-            Activity activity = mActivityRule.getActivity();
+            Activity activity = mActivityTestRule.getActivity();
             Spoon.screenshot(activity, "clear_screen");
             onView(withText(R.string.show_result)).perform(click());
-            onView(withText("Input shouldn't be empty")).inRoot(withDecorView(not(is(mActivityRule.
+            onView(withText("Input shouldn't be empty")).inRoot(withDecorView(not(is(mActivityTestRule.
                     getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
             Spoon.screenshot(activity, "screen_with_toast");
 
         }
-    }
 
-    @LargeTest
-    @RunWith(AndroidJUnit4.class)
-    class MainActivityTestNormalWork {
 
-        @Rule
-        public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
         @Rule
         public GrantPermissionRule mRuntimePermissionRule =
                 grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -109,4 +91,3 @@ public class MainActivityUITest {
             Spoon.screenshot(mActivityTestRule.getActivity(), "screen_aftter_reverse");
         }
     }
-}
