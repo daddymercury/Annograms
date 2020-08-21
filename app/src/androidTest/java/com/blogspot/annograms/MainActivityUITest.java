@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 
 import androidx.test.InstrumentationRegistry;
+import androidx.test.espresso.Espresso;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -36,6 +37,10 @@ public class MainActivityUITest {
         @Rule
         public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+        @Rule
+        public GrantPermissionRule mRuntimePermissionRule = grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE);
+
 
         private void rotateScreen() {
             Context context = InstrumentationRegistry.getTargetContext();
@@ -52,14 +57,16 @@ public class MainActivityUITest {
         @Test
         public void mainActivityTestOrientation() {
             Activity activity = mActivityTestRule.getActivity();
-
             Spoon.screenshot(activity, "clear_screen");
             onView(withId(R.id.editTextInput)).perform(typeText("This is a Test Me$$age"));
+            Espresso.onView(withId(R.id.editTextInput)).check(matches(withText("This is a Test Me$$age")));
             Spoon.screenshot(activity, "screen_with_text_before_rotating");
             rotateScreen();
             Spoon.screenshot(activity, "screen_with_text_after_rotating");
             rotateScreen();
-            Spoon.screenshot(activity, "screen_with_text_after_second_rotating");
+            Espresso.onView(withId(R.id.editTextInput)).check(matches(withText("This is a broken Test Me$$age")));
+            Spoon.screenshot(activity, "screen_with_text_after_second_rotating_and_broke");
+
         }
 
 
@@ -74,11 +81,6 @@ public class MainActivityUITest {
 
         }
 
-
-        @Rule
-        public GrantPermissionRule mRuntimePermissionRule =
-                grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE);
 
         @Test
         public void mainActivityTest() {
