@@ -64,8 +64,8 @@ public class MainActivityUITest {
             rotateScreen();
             Spoon.screenshot(activity, "screen_with_text_after_rotating");
             rotateScreen();
-            Espresso.onView(withId(R.id.editTextInput)).check(matches(withText("This is a broken Test Me$$age")));
-            Spoon.screenshot(activity, "screen_with_text_after_second_rotating_and_broke");
+            Espresso.onView(withId(R.id.editTextInput)).check(matches(withText("This is a Test Me$$age")));
+            Spoon.screenshot(activity, "screen_with_text_after_second_rotating");
 
         }
 
@@ -87,9 +87,10 @@ public class MainActivityUITest {
             Activity activity = mActivityTestRule.getActivity();
 
             Spoon.screenshot(activity, "clear_screen");
-            onView(withId(R.id.editTextInput)).perform(typeText("this i$ an e$press7o t38e-s8t"));
+            onView(withId(R.id.editTextInput)).perform(typeText("hello"));
             Spoon.screenshot(activity, "screen_with_string");
             onView(withText(R.string.show_result)).perform(click());
+            Espresso.onView(withId(R.id.editTextInput)).check(matches(withText("olleh")));
             Spoon.screenshot(mActivityTestRule.getActivity(), "screen_aftter_reverse");
         }
     }
