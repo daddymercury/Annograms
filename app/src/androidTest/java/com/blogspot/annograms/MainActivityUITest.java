@@ -27,6 +27,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.rule.GrantPermissionRule.grant;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
@@ -35,10 +36,10 @@ import static org.hamcrest.Matchers.not;
 public class MainActivityUITest {
 
         @Rule
-        public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+        public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
         @Rule
-        public GrantPermissionRule mRuntimePermissionRule = grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        public GrantPermissionRule runtimePermissionRule = grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE);
 
 
@@ -46,7 +47,7 @@ public class MainActivityUITest {
             Context context = InstrumentationRegistry.getTargetContext();
             int orientation = context.getResources().getConfiguration().orientation;
 
-            Activity activity = mActivityTestRule.getActivity();
+            Activity activity = activityTestRule.getActivity();
             activity.setRequestedOrientation(
                     (orientation == Configuration.ORIENTATION_PORTRAIT) ?
                             ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE :
@@ -56,7 +57,7 @@ public class MainActivityUITest {
 
         @Test
         public void mainActivityTestOrientation() {
-            Activity activity = mActivityTestRule.getActivity();
+            Activity activity = activityTestRule.getActivity();
             Spoon.screenshot(activity, "clear_screen");
             onView(withId(R.id.editTextInput)).perform(typeText("This is a Test Me$$age"));
             Espresso.onView(withId(R.id.editTextInput)).check(matches(withText("This is a Test Me$$age")));
@@ -72,10 +73,10 @@ public class MainActivityUITest {
 
         @Test
         public void shouldShowToast() {
-            Activity activity = mActivityTestRule.getActivity();
+            Activity activity = activityTestRule.getActivity();
             Spoon.screenshot(activity, "clear_screen");
             onView(withText(R.string.show_result)).perform(click());
-            onView(withText("Input shouldn't be empty")).inRoot(withDecorView(not(is(mActivityTestRule.
+            onView(withText("Input shouldn't be empty")).inRoot(withDecorView(not(is(activityTestRule.
                     getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
             Spoon.screenshot(activity, "screen_with_toast");
 
@@ -84,13 +85,13 @@ public class MainActivityUITest {
 
         @Test
         public void mainActivityTest() {
-            Activity activity = mActivityTestRule.getActivity();
+            Activity activity = activityTestRule.getActivity();
 
             Spoon.screenshot(activity, "clear_screen");
             onView(withId(R.id.editTextInput)).perform(typeText("hello"));
             Spoon.screenshot(activity, "screen_with_string");
             onView(withText(R.string.show_result)).perform(click());
-            Espresso.onView(withId(R.id.editTextInput)).check(matches(withText("olleh")));
-            Spoon.screenshot(mActivityTestRule.getActivity(), "screen_aftter_reverse");
+            Espresso.onView(withId(R.id.textViewResult)).check(matches(withText(containsString("olleh"))));
+            Spoon.screenshot(activityTestRule.getActivity(), "screen_aftter_reverse");
         }
     }
